@@ -1,6 +1,7 @@
 import 'package:calendar/widgets/calendar_days.dart';
 import 'package:calendar/widgets/pinned_flexiable_sliver.dart';
 import 'package:calendar/widgets/weeky_titles.dart';
+import 'package:calendar/widgets/yiji_card.dart';
 import 'package:flutter/material.dart';
 
 class CalendarScreen extends StatefulWidget {
@@ -65,6 +66,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
             ),
           ),
         ),
+        SliverToBoxAdapter(child: YijiCard(dateTime: DateTime.now())),
         SliverFillRemaining(child: Container(color: Colors.amber)),
       ],
     );
