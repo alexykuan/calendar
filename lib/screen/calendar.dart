@@ -43,7 +43,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
             ),
           ],
         ),
-        PinnedHeaderSliver(child: WeekyTitles()),
+        PinnedHeaderSliver(child: WeeklyTitles()),
         PinnedFlexibleSliver(
           maxHeight: calendarCellHeight * 5 + kCalendarSpace * 4,
           minHeight: calendarCellHeight,

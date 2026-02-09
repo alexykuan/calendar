@@ -1,9 +1,9 @@
 import 'package:calendar/bean/day.dart';
 import 'package:flutter/material.dart';
 
-class WeekyTitles extends StatelessWidget {
+class WeeklyTitles extends StatelessWidget {
   final FirstDayOfWeek firstDayOfWeek;
-  const WeekyTitles({super.key, this.firstDayOfWeek = FirstDayOfWeek.monday});
+  const WeeklyTitles({super.key, this.firstDayOfWeek = FirstDayOfWeek.monday});
 
   @override
   Widget build(BuildContext context) {

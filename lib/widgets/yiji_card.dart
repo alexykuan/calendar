@@ -11,25 +11,32 @@ class YijiCard extends StatelessWidget {
     return Material(
       color: Colors.transparent,
       child: Container(
-        margin: EdgeInsets.all(15),
-        decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(20)),
-        padding: EdgeInsets.all(15),
+        margin: .all(15),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(16),
+        ),
+        padding: .all(15),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               '${lunar.getMonthInChinese()}月${lunar.getDayInChinese()}',
-              style: TextStyle(fontSize: 20, color: Colors.blue, fontWeight: FontWeight.w700),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 8.0),
-              child: Text(
-                '${lunar.getYearInGanZhi()}${lunar.getYearShengXiao()}年 ${lunar.getMonthInGanZhi()}月 ${lunar.getDayInGanZhi()}日',
-                style: TextStyle(fontSize: 14),
+              style: TextStyle(
+                fontSize: 20,
+                color: Colors.blue,
+                fontWeight: FontWeight.w700,
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 20),
+              padding: const .only(top: 8.0),
+              child: Text(
+                '${lunar.getYearInGanZhi()}${lunar.getYearShengXiao()}年 ${lunar.getMonthInGanZhi()}月 ${lunar.getDayInGanZhi()}日',
+                style: TextStyle(fontSize: 14, fontWeight: .bold),
+              ),
+            ),
+            Padding(
+              padding: const .only(top: 20),
               child: Row(
                 children: [
                   Expanded(
@@ -39,14 +46,18 @@ class YijiCard extends StatelessWidget {
                           WidgetSpan(
                             alignment: PlaceholderAlignment.middle,
                             child: Container(
-                              width: 20,
-                              height: 20,
-                              margin: EdgeInsets.only(right: 4),
-                              decoration: BoxDecoration(color: Colors.blue, borderRadius: BorderRadius.circular(6)),
+                              width: 16,
+                              height: 16,
+                              margin: .only(right: 4),
+                              decoration: BoxDecoration(
+                                color: Colors.blue,
+                                borderRadius: BorderRadius.circular(4),
+                              ),
                               child: Center(
                                 child: Text(
                                   '宜',
                                   style: TextStyle(
+                                    fontSize: 10,
                                     color: Colors.white,
                                     fontWeight: FontWeight.w600,
                                     overflow: TextOverflow.ellipsis,
@@ -70,14 +81,18 @@ class YijiCard extends StatelessWidget {
                           WidgetSpan(
                             alignment: PlaceholderAlignment.middle,
                             child: Container(
-                              width: 20,
-                              height: 20,
+                              width: 16,
+                              height: 16,
                               margin: EdgeInsets.only(right: 4),
-                              decoration: BoxDecoration(color: Colors.grey, borderRadius: BorderRadius.circular(6)),
+                              decoration: BoxDecoration(
+                                color: Colors.grey,
+                                borderRadius: BorderRadius.circular(4),
+                              ),
                               child: Center(
                                 child: Text(
                                   '忌',
                                   style: TextStyle(
+                                    fontSize: 10,
                                     color: Colors.white,
                                     fontWeight: FontWeight.w600,
                                     overflow: TextOverflow.ellipsis,
