@@ -1,4 +1,5 @@
 import 'package:calendar/bean/day.dart';
+import 'package:calendar/widgets/calendar_days.dart';
 import 'package:flutter/material.dart';
 
 class WeeklyTitles extends StatelessWidget {
@@ -12,19 +13,17 @@ class WeeklyTitles extends StatelessWidget {
       FirstDayOfWeek.saturday => 5,
       FirstDayOfWeek.sunday => 6,
     };
-    return Material(
-      color: Colors.white,
-      child: Padding(
-        padding: EdgeInsets.symmetric(vertical: 3),
-        child: Row(
-          children: List.generate(
-            7,
-            (index) => Expanded(
-              child: Center(
-                child: Text(
-                  WeekDay.values[(index + offset) % 7].name,
-                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
-                ),
+    return Container(
+      color: Theme.of(context).colorScheme.surface,
+      padding: .symmetric(vertical: 3, horizontal: kCalendarHorizontalPadding),
+      child: Row(
+        children: List.generate(
+          7,
+          (index) => Expanded(
+            child: Center(
+              child: Text(
+                WeekDay.values[(index + offset) % 7].name,
+                style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
               ),
             ),
           ),

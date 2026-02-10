@@ -1,4 +1,5 @@
 import 'package:calendar/screen/calendar.dart';
+import 'package:calendar/themes.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple)),
+      theme: darkTheme,
       home: const CalendarScreen(),
     );
   }

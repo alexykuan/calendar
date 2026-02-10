@@ -85,7 +85,11 @@ class _PinnedFlexibleSliverDelegate extends SliverPersistentHeaderDelegate {
           maxHeight: maxExtent,
           child: Transform.translate(
             offset: Offset(0, -visibleTop),
-            child: SizedBox(height: maxExtent, width: double.infinity, child: child),
+            child: SizedBox(
+              height: maxExtent,
+              width: double.infinity,
+              child: RepaintBoundary(child: child),
+            ),
           ),
         ),
       ),
