@@ -32,8 +32,43 @@ class _MonthsPagerState extends State<MonthsPager> {
   /// 当前展示的月份对应的 page 下标，用于选择非当月日期时跳转
   late int _currentPageIndex = now.year * 12 + now.month - 1 - 1900 * 12;
 
-  int _pageIndexFor(DateTime date) =>
-      (date.year - 1900) * 12 + date.month - 1;
+  int _pageIndexFor(DateTime date) => (date.year - 1900) * 12 + date.month - 1;
+
+  void _syncFromController() {
+    final controller = widget.controller;
+    if (controller == null) return;
+    final target = controller.currentTime;
+    if (target == currentSelected) return;
+    setState(() {
+      currentSelected = target;
+    });
+    final targetPage = _pageIndexFor(target);
+    if (targetPage != _currentPageIndex) {
+      _currentPageIndex = targetPage;
+      _pageController.jumpToPage(targetPage);
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    widget.controller?.addListener(_syncFromController);
+  }
+
+  @override
+  void didUpdateWidget(MonthsPager oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.controller != widget.controller) {
+      oldWidget.controller?.removeListener(_syncFromController);
+      widget.controller?.addListener(_syncFromController);
+    }
+  }
+
+  @override
+  void dispose() {
+    widget.controller?.removeListener(_syncFromController);
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {

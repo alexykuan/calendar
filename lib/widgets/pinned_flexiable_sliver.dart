@@ -66,8 +66,15 @@ class _PinnedFlexibleSliverDelegate extends SliverPersistentHeaderDelegate {
   double get maxExtent => maxHeight;
 
   @override
-  Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
-    final currentHeight = (maxExtent - shrinkOffset).clamp(minExtent, maxExtent);
+  Widget build(
+    BuildContext context,
+    double shrinkOffset,
+    bool overlapsContent,
+  ) {
+    final currentHeight = (maxExtent - shrinkOffset).clamp(
+      minExtent,
+      maxExtent,
+    );
     final maxScroll = maxExtent - minExtent;
     final t = maxScroll > 0 ? (shrinkOffset / maxScroll).clamp(0.0, 1.0) : 1.0;
 

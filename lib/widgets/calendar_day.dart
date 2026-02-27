@@ -28,7 +28,7 @@ _DayDisplayData _computeDayDisplayData(DateTime date) {
   final jieQi = lunar.getCurrentJieQi()?.getName();
   final subtitle = jieQi ?? lunar.getDayInChinese();
   return _DayDisplayData(
-    holidayName: holiday?.getName(),
+    holidayName: isHolidayTargetDay ? holiday?.getName() : null,
     isRestDay: holiday != null && !holiday.isWork(),
     isHolidayTargetDay: isHolidayTargetDay,
     subtitle: subtitle,
@@ -36,8 +36,7 @@ _DayDisplayData _computeDayDisplayData(DateTime date) {
 }
 
 _DayDisplayData _getDayDisplayData(DateTime date) {
-  final key =
-      '${date.year}-${date.month}-${date.day}';
+  final key = '${date.year}-${date.month}-${date.day}';
   var data = _dayDisplayCache[key];
   if (data != null) return data;
   data = _computeDayDisplayData(date);
@@ -71,16 +70,21 @@ class _CalendarDayWidgetState extends State<CalendarDayWidget> {
   @override
   Widget build(BuildContext context) {
     final data = _getDayDisplayData(widget.date);
+    final isToday =
+        Solar.fromDate(DateTime.now()).subtract(Solar.fromDate(widget.date)) ==
+        0;
     return RepaintBoundary(
       child: GestureDetector(
         onTap: () => widget.onTap(),
         child: Container(
           decoration: BoxDecoration(
-            borderRadius: (data.isRestDay || widget.isSelected)
+            borderRadius: (data.isRestDay || widget.isSelected || isToday)
                 ? BorderRadius.circular(8)
                 : null,
-            color: data.isRestDay
-                ? Theme.of(context).colorScheme.primary.withValues(alpha: 0.2)
+            color: (data.isRestDay || isToday)
+                ? Theme.of(
+                    context,
+                  ).colorScheme.primary.withValues(alpha: isToday ? 1.0 : 0.2)
                 : null,
             border: widget.isSelected
                 ? Border.all(
@@ -94,19 +98,24 @@ class _CalendarDayWidgetState extends State<CalendarDayWidget> {
             children: [
               Text(
                 '${widget.date.day}',
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                  color: isToday
+                      ? Theme.of(context).colorScheme.onPrimary
+                      : Theme.of(context).colorScheme.onSurface,
+                ),
               ),
-              data.holidayName != null &&
-                      data.isRestDay &&
-                      data.isHolidayTargetDay
-                  ? Text(
-                      data.holidayName!,
-                      style: TextStyle(fontSize: 10, color: Colors.red),
-                    )
-                  : Text(
-                      data.subtitle,
-                      style: TextStyle(fontSize: 10),
-                    ),
+
+              Text(
+                data.holidayName ?? data.subtitle,
+                style: TextStyle(
+                  fontSize: 10,
+                  color: isToday
+                      ? Theme.of(context).colorScheme.onPrimary
+                      : Theme.of(context).colorScheme.onSurface,
+                ),
+              ),
             ],
           ),
         ),
