@@ -149,6 +149,7 @@ final lightTheme = ThemeData(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
     ),
   ),
+  scaffoldBackgroundColor: const Color(0xFFF7F7F9),
 );
 
 // Bilibili M3 深色主题
@@ -300,4 +301,5 @@ final darkTheme = ThemeData(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
     ),
   ),
+  scaffoldBackgroundColor: const Color(0xFF212226),
 );

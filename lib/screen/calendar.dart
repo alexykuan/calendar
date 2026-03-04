@@ -22,19 +22,13 @@ class _CalendarScreenState extends State<CalendarScreen> {
   @override
   void initState() {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(
+        systemNavigationBarColor: Colors.transparent,
+        systemNavigationBarIconBrightness: .dark,
+      ),
+    );
     super.initState();
-  }
-
-  @override
-  void dispose() {
-    // 离开页面时恢复默认（允许所有方向）
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.portraitUp,
-      DeviceOrientation.portraitDown,
-      DeviceOrientation.landscapeLeft,
-      DeviceOrientation.landscapeRight,
-    ]);
-    super.dispose();
   }
 
   @override
@@ -45,7 +39,6 @@ class _CalendarScreenState extends State<CalendarScreen> {
             2 * kCalendarHorizontalPadding) /
         7.0;
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.surfaceContainerHighest,
       floatingActionButton: ListenableBuilder(
         listenable: _monthPagerController,
         builder: (context, child) {
