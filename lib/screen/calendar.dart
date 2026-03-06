@@ -1,5 +1,6 @@
 import 'package:calendar/widgets/amplified_scroll_physics.dart';
 import 'package:calendar/widgets/calendar_days.dart';
+import 'package:calendar/widgets/festvial_card.dart';
 import 'package:calendar/widgets/months.dart';
 import 'package:calendar/widgets/pinned_flexiable_sliver.dart';
 import 'package:calendar/widgets/selected_day_title.dart';
@@ -39,6 +40,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
             2 * kCalendarHorizontalPadding) /
         7.0;
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.surfaceContainerHighest,
       floatingActionButton: ListenableBuilder(
         listenable: _monthPagerController,
         builder: (context, child) {
@@ -77,7 +79,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
       body: CustomScrollView(
         physics: const AmplifiedScrollPhysics(
           speedFactor: 1.8,
-          parent: BouncingScrollPhysics(),
+          parent: ClampingScrollPhysics(),
         ),
         slivers: [
           SliverAppBar(
@@ -159,7 +161,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
               ),
             ),
           ),
-          PinnedHeaderSliver(
+          SliverToBoxAdapter(
             child: ListenableBuilder(
               listenable: _monthPagerController,
               builder: (context, child) {
@@ -167,12 +169,15 @@ class _CalendarScreenState extends State<CalendarScreen> {
               },
             ),
           ),
-          SliverFillRemaining(
-            child: Container(
-              height: double.infinity,
-              color: Theme.of(context).colorScheme.surfaceContainerHighest,
+          SliverToBoxAdapter(
+            child: ListenableBuilder(
+              listenable: _monthPagerController,
+              builder: (context, child) {
+                return FestivalCard(dateTime: _monthPagerController.currentTime);
+              },
             ),
           ),
+          SliverFillRemaining(hasScrollBody: true)
         ],
       ),
     );
