@@ -150,6 +150,12 @@ final lightTheme = ThemeData(
     ),
   ),
   scaffoldBackgroundColor: const Color(0xFFF7F7F9),
+  pageTransitionsTheme: PageTransitionsTheme(
+    builders: {
+      TargetPlatform.android: const OpenUpwardsPageTransitionsBuilder(),
+      TargetPlatform.iOS: const OpenUpwardsPageTransitionsBuilder(),
+    },
+  ),
 );
 
 // Bilibili M3 深色主题
@@ -302,4 +308,10 @@ final darkTheme = ThemeData(
     ),
   ),
   scaffoldBackgroundColor: const Color(0xFF212226),
+  pageTransitionsTheme: PageTransitionsTheme(
+    builders: {
+      TargetPlatform.android: const OpenUpwardsPageTransitionsBuilder(),
+      TargetPlatform.iOS: const OpenUpwardsPageTransitionsBuilder(),
+    },
+  ),
 );

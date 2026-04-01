@@ -13,13 +13,17 @@ class AlmanacCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final solar = Solar.fromDate(dateTime);
     final lunar = Lunar.fromDate(dateTime);
-    return Container(
-      margin: .all(15),
-      decoration: BoxDecoration(
-        border: .all(color: Theme.of(context).colorScheme.primary, width: 1.5),
-        borderRadius: .circular(10),
-      ),
-      child: SingleChildScrollView(
+    return Align(
+      alignment: Alignment.topCenter,
+      child: Container(
+        margin: .all(15),
+        decoration: BoxDecoration(
+          border: .all(
+            color: Theme.of(context).colorScheme.primary,
+            width: 1.5,
+          ),
+          borderRadius: .circular(10),
+        ),
         child: Column(
           mainAxisSize: .min,
           children: [

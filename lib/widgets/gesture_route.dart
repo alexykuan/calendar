@@ -4,7 +4,6 @@ import 'package:flutter/cupertino.dart';
 class GesturePageRoute<T> extends CupertinoPageRoute<T> {
   GesturePageRoute({required super.builder});
 
-  // 重写过渡动画构建逻辑
   @override
   Widget buildTransitions(
     BuildContext context,
@@ -12,15 +11,20 @@ class GesturePageRoute<T> extends CupertinoPageRoute<T> {
     Animation<double> secondaryAnimation,
     Widget child,
   ) {
-    // 禁用跳转时的横向滚动动画（直接显示child）
-    return child;
+    // 返回：正常iOS动画 + 手势
+    if (animation.status == AnimationStatus.reverse) {
+      return super.buildTransitions(
+        context,
+        animation,
+        secondaryAnimation,
+        child,
+      );
+    }
 
-    // 若需侧滑返回时有动画，跳转时无动画，可加判断：
-    // if (animation.status == AnimationStatus.reverse) {
-    //   // 侧滑返回时保留默认动画
-    //   return super.buildTransitions(context, animation, secondaryAnimation, child);
-    // }
-    // // 跳转时无动画
-    // return child;
+    // 进入：保留动画给Hero，但页面完全不移动
+    return SlideTransition(
+      position: AlwaysStoppedAnimation(Offset.zero),
+      child: FadeTransition(opacity: AlwaysStoppedAnimation(1.0), child: child),
+    );
   }
 }

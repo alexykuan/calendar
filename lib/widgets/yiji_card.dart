@@ -1,5 +1,4 @@
 import 'package:calendar/screen/almanac.dart';
-import 'package:calendar/widgets/gesture_route.dart';
 import 'package:calendar/widgets/inkwell_card.dart';
 import 'package:flutter/material.dart';
 import 'package:lunar/calendar/Lunar.dart';
@@ -16,7 +15,7 @@ class YijiCard extends StatelessWidget {
       child: InkwellCard(
         onTap: () {
           Navigator.of(context).push(
-            GesturePageRoute(
+            MaterialPageRoute(
               builder: (context) => AlmanacScreen(dateTime: dateTime),
             ),
           );

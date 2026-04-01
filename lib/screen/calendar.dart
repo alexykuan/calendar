@@ -173,11 +173,13 @@ class _CalendarScreenState extends State<CalendarScreen> {
             child: ListenableBuilder(
               listenable: _monthPagerController,
               builder: (context, child) {
-                return FestivalCard(dateTime: _monthPagerController.currentTime);
+                return FestivalCard(
+                  dateTime: _monthPagerController.currentTime,
+                );
               },
             ),
           ),
-          SliverFillRemaining(hasScrollBody: true)
+          SliverFillRemaining(hasScrollBody: true),
         ],
       ),
     );
