@@ -1,4 +1,4 @@
-import 'package:calendar/screen/almanac.dart';
+import 'package:calendar/screens/almanac.dart';
 import 'package:calendar/widgets/inkwell_card.dart';
 import 'package:flutter/material.dart';
 import 'package:lunar/calendar/Lunar.dart';
@@ -27,7 +27,7 @@ class YijiCard extends StatelessWidget {
             Text(
               '${lunar.getMonthInChinese()}月${lunar.getDayInChinese()}',
               style: TextStyle(
-                fontSize: 20,
+                fontSize: 24,
                 color: Theme.of(context).colorScheme.primary,
                 fontWeight: FontWeight.bold,
               ),

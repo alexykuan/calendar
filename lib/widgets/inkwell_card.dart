@@ -9,13 +9,13 @@ class InkwellCard extends StatelessWidget {
     super.key,
     required this.onTap,
     required this.child,
-    this.padding = const EdgeInsets.all(15),
+    this.padding = const EdgeInsets.all(14),
   });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: .only(left: 12, top: 12, right: 12),
+      padding: .only(left: 14, top: 14, right: 14),
       child: Material(
         color: Theme.of(context).colorScheme.surface,
         clipBehavior: .hardEdge,

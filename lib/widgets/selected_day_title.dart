@@ -15,9 +15,9 @@ class TimeTitle extends StatelessWidget {
         children: [
           TextSpan(
             text: dateTime.year != DateTime.now().year
-                ? '${dateTime.year}年${dateTime.month}月${dateTime.day}日'
-                : '${dateTime.month}月${dateTime.day}日',
-            style: TextStyle(fontSize: 18, fontWeight: .bold),
+                ? '${dateTime.year}/${dateTime.month}'
+                : '${dateTime.month}月',
+            style: TextStyle(fontSize: 22, fontWeight: .w500),
           ),
           if (dayDiff != 0)
             TextSpan(

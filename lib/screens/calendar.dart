@@ -1,3 +1,4 @@
+import 'package:calendar/dialogs/calendar_actions.dart';
 import 'package:calendar/widgets/amplified_scroll_physics.dart';
 import 'package:calendar/widgets/calendar_days.dart';
 import 'package:calendar/widgets/festvial_card.dart';
@@ -103,7 +104,9 @@ class _CalendarScreenState extends State<CalendarScreen> {
                 ),
               ),
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  showCalendarActionsDialog(context);
+                },
                 icon: Icon(
                   Icons.more_vert,
                   color: Theme.of(context).colorScheme.onSurface,

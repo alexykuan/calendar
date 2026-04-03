@@ -1,4 +1,4 @@
-import 'package:calendar/screen/calendar.dart';
+import 'package:calendar/screens/calendar.dart';
 import 'package:calendar/themes.dart';
 import 'package:flutter/material.dart';
 
