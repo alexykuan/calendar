@@ -22,6 +22,7 @@ class _MonthFestivalData {
   });
   final DateTime monthFirstDay;
   final List<Festival> festivals;
+
   /// 与 [festivals] 一一对应，距 [sourceDateTime] 的天数
   final List<int> dayDiffs;
 }
@@ -106,7 +107,10 @@ class _FestivalAndSolarTermsScreenState
                   flexibleSpace: FlexibleSpaceBar(
                     title: Opacity(
                       opacity: 1 - fraction,
-                      child: const Text('节日倒数'),
+                      child: const Text(
+                        '节日倒数',
+                        style: TextStyle(fontWeight: .bold),
+                      ),
                     ),
                     centerTitle: false,
                     titlePadding: const EdgeInsets.only(left: 16),

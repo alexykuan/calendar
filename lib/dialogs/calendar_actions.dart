@@ -37,39 +37,52 @@ Future<void> showCalendarActionsDialog(BuildContext context) {
         ) {
           return Align(
             alignment: Alignment.topRight,
-            child: Material(
-              color: Colors.transparent,
-              elevation: 4,
-              child: Container(
-                margin: .only(
-                  right: 16,
-                  top: kToolbarHeight + MediaQuery.of(context).padding.top,
-                ),
-                width: 160,
-                decoration: BoxDecoration(
-                  borderRadius: .circular(12),
-                  color: Theme.of(context).colorScheme.surfaceContainerHighest,
-                ),
-                child: Column(
-                  mainAxisSize: .min,
-                  children: [
-                    ListTile(
-                      dense: true,
-                      title: Text('搜索日程', style: TextStyle(fontWeight: .bold)),
-                    ),
-                    ListTile(
-                      dense: true,
-                      title: Text('日期跳转', style: TextStyle(fontWeight: .bold)),
-                    ),
-                    ListTile(
-                      dense: true,
-                      title: Text('日期推算', style: TextStyle(fontWeight: .bold)),
-                    ),
-                    ListTile(
-                      dense: true,
-                      title: Text('设置', style: TextStyle(fontWeight: .bold)),
-                    ),
-                  ],
+            child: Padding(
+              padding: .only(
+                right: 16,
+                top: kToolbarHeight + MediaQuery.of(context).padding.top,
+              ),
+              child: Material(
+                color: Colors.transparent,
+                elevation: 4,
+                child: Container(
+                  width: 160,
+                  decoration: BoxDecoration(
+                    borderRadius: .circular(12),
+                    color: Theme.of(
+                      context,
+                    ).colorScheme.surfaceContainerHighest,
+                  ),
+                  child: Column(
+                    mainAxisSize: .min,
+                    children: [
+                      ListTile(
+                        dense: true,
+                        title: Text(
+                          '搜索日程',
+                          style: TextStyle(fontWeight: .bold),
+                        ),
+                      ),
+                      ListTile(
+                        dense: true,
+                        title: Text(
+                          '日期跳转',
+                          style: TextStyle(fontWeight: .bold),
+                        ),
+                      ),
+                      ListTile(
+                        dense: true,
+                        title: Text(
+                          '日期推算',
+                          style: TextStyle(fontWeight: .bold),
+                        ),
+                      ),
+                      ListTile(
+                        dense: true,
+                        title: Text('设置', style: TextStyle(fontWeight: .bold)),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
