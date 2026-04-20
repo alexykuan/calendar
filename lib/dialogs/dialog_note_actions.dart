@@ -1,10 +1,11 @@
+import 'package:calendar/screens/event_schedual.dart';
 import 'package:flutter/material.dart';
 
-Future<void> showCalendarActionsDialog(BuildContext context) {
+Future<void> showCalendarNoteActionsDialog(BuildContext context) {
   return showGeneralDialog(
     context: context,
     barrierDismissible: true,
-    barrierLabel: 'Calendar Actions',
+    barrierLabel: 'Calendar Note Actions',
     transitionDuration: Duration(milliseconds: 300),
     transitionBuilder: (context, animation, secondaryAnimation, child) {
       // 缩放：0 → 1
@@ -39,7 +40,7 @@ Future<void> showCalendarActionsDialog(BuildContext context) {
             alignment: Alignment.topRight,
             child: Padding(
               padding: .only(
-                right: 16,
+                right: 48,
                 top: kToolbarHeight + MediaQuery.of(context).padding.top,
               ),
               child: Material(
@@ -57,29 +58,33 @@ Future<void> showCalendarActionsDialog(BuildContext context) {
                     mainAxisSize: .min,
                     children: [
                       ListTile(
+                        onTap: () {
+                          Navigator.of(context).pop();
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => EventSchedualScreen(),
+                            ),
+                          );
+                        },
                         dense: true,
                         title: Text(
-                          '搜索日程',
+                          '创建日程',
                           style: TextStyle(fontWeight: .bold),
                         ),
                       ),
                       ListTile(
                         dense: true,
                         title: Text(
-                          '日期跳转',
+                          '日常打卡',
                           style: TextStyle(fontWeight: .bold),
                         ),
                       ),
                       ListTile(
                         dense: true,
                         title: Text(
-                          '日期推算',
+                          '记录账单',
                           style: TextStyle(fontWeight: .bold),
                         ),
-                      ),
-                      ListTile(
-                        dense: true,
-                        title: Text('设置', style: TextStyle(fontWeight: .bold)),
                       ),
                     ],
                   ),

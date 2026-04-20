@@ -62,8 +62,8 @@ class _FestivalAndSolarTermsScreenState
           SolarUtil.getDaysOfMonth(monthFirstDay.year, monthFirstDay.month) - 1;
       final festivals = getFestivals(
         monthFirstDay,
-        step: daysOfMonth,
-        max: daysOfMonth,
+        step: daysOfMonth - (monthFirstDay.day - 1),
+        max: daysOfMonth - (monthFirstDay.day - 1),
       );
       final dayDiffs = festivals
           .map((f) => Solar.fromDate(f.dateTime).subtract(sourceSolar))

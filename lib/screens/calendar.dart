@@ -1,6 +1,5 @@
-import 'package:calendar/dialogs/calendar_actions.dart';
-import 'package:calendar/screens/event_schedual.dart';
-import 'package:calendar/widgets/amplified_scroll_physics.dart';
+import 'package:calendar/dialogs/dialog_more_actions.dart';
+import 'package:calendar/dialogs/dialog_note_actions.dart';
 import 'package:calendar/widgets/calendar_days.dart';
 import 'package:calendar/widgets/festvial_card.dart';
 import 'package:calendar/widgets/months.dart';
@@ -32,6 +31,12 @@ class _CalendarScreenState extends State<CalendarScreen> {
       ),
     );
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    _monthPagerController.dispose();
+    super.dispose();
   }
 
   @override
@@ -84,10 +89,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
               );
 
           return CustomScrollView(
-            physics: const AmplifiedScrollPhysics(
-              speedFactor: 1.8,
-              parent: ClampingScrollPhysics(),
-            ),
+            physics: ClampingScrollPhysics(),
             slivers: [
               SliverAppBar(
                 automaticallyImplyLeading: false,
@@ -106,11 +108,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                 actions: [
                   IconButton(
                     onPressed: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (_) => const EventSchedualScreen(),
-                        ),
-                      );
+                      showCalendarNoteActionsDialog(context);
                     },
                     icon: Icon(
                       Icons.add,
@@ -119,7 +117,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
                   ),
                   IconButton(
                     onPressed: () {
-                      showCalendarActionsDialog(context);
+                      showCalendarMoreActionsDialog(context);
                     },
                     icon: Icon(
                       Icons.more_vert,
